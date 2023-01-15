@@ -41,7 +41,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 DEBUG = get_env_variable('DEBUG')
 
-SECRET_KEY    = get_env_variable('SECRET_KEY')
+SECRET_KEY = get_env_variable('SECRET_KEY')
 ALLOWED_HOSTS = (get_env_variable('ALLOWED_HOSTS'), )
 
 APPEND_SLASH  = False
@@ -51,6 +51,7 @@ APPEND_SLASH  = False
 
 PROJECT_APPS = [
     'core',
+    'api',
 ]
 
 THIRD_PARTY_APPS = [
@@ -124,7 +125,7 @@ REDIS_HOSTNAME = get_env_variable('REDIS_HOSTNAME')
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": f"redis://{REDIS_HOSTNAME}:6379/1",     # Redis DB 1번 사용
+        "LOCATION": f"redis://{REDIS_HOSTNAME}:6379/1",  # Redis DB 1번 사용
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
         }
