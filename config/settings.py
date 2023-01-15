@@ -50,7 +50,7 @@ APPEND_SLASH  = False
 # Application definition
 
 PROJECT_APPS = [
-
+    'core',
 ]
 
 THIRD_PARTY_APPS = [
@@ -106,14 +106,14 @@ WSGI_APPLICATION = "config.wsgi.application"
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 
-## DOCKER DB ##
+## LOCAL DB ##
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': get_env_variable('MYSQL_DATABASE'),
-        'USER': 'root',
+        'USER': get_env_variable('MYSQL_USER'),
         'PASSWORD': get_env_variable('MYSQL_ROOT_PASSWORD'),
-        'HOST': 'localhost',
+        'HOST': get_env_variable('MYSQL_HOST'),
         'PORT': get_env_variable('MYSQL_TCP_PORT'),
     }
 }
