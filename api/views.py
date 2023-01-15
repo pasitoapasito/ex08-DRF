@@ -5,7 +5,9 @@ from rest_framework.response import Response
 from rest_framework.permissions import AllowAny
 
 from drf_yasg.utils import swagger_auto_schema
+
 from core.utils.migrate import wating_queue, participating_queue
+from api.models import Coupon
 
 
 class CouponEventView(APIView):
@@ -21,9 +23,13 @@ class CouponEventView(APIView):
             )
 
             element = json.loads(participating_queue.get(block=True, timeout=30))
+            print(element['participant'])
             if element['participant'] > 10:
                 return Response({'detail': '이벤트 쿠폰이 모두 소진되었습니다.'}, status=400)
 
-            return Response({'success': 'coupon'}, status=200)
+            coupon = Coupon.objects.create()
+            number = coupon.number
+
+            return Response({'coupon': number}, status=200)
         except Exception as e:
             return Response({'error': e}, status=400)

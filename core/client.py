@@ -1,6 +1,7 @@
 import asyncio, time
 
 from aiohttp import ClientSession, ClientTimeout, TCPConnector
+from pprint import pprint
 
 
 _timeout = ClientTimeout(total=10)
@@ -12,7 +13,7 @@ async def async_fetcher(session, url):
 
 
 async def async_func():
-    urls = ['http://localhost:8000/api'] * 15
+    urls = ['http://localhost:8000/api'] * 20
 
     """
     aiohttp: 비동기적 요청 라이브러리 활용(비동기적 요청을 동시성으로 처리)
@@ -21,16 +22,14 @@ async def async_func():
         connector=TCPConnector(ssl=False)
     ) as session:
         result = await asyncio.gather(*[async_fetcher(session, url) for url in urls])
-        print(result)
+        pprint(result)
 
         return result
 
 
 if __name__ == "__main__":
     async_start = time.time()
-    asyncio.run(
-        async_func()
-    )
+    asyncio.run(async_func())
     async_end = time.time()
 
     print(f"쿠폰 이벤트 결과: {async_end - async_start}")

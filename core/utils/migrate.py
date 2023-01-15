@@ -27,8 +27,10 @@ class MigrateParticapant:
         wating_queue.clear()
         participating_queue.clear()
         try:
-            for i in range(15):
+            for i in range(100):
                 element = json.loads(wating_queue.get(block=True, timeout=180))
+                if not element:
+                    break
                 element['participant'] = i+1
                 participating_queue.put(json.dumps(element))
             else:
