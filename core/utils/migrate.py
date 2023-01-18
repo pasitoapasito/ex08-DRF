@@ -1,9 +1,9 @@
 import json
 
 from background_task import background
-from core.utils.queue import RedisQueue
-from config.settings import REDIS_HOSTNAME
 
+from config.settings import REDIS_HOSTNAME
+from core.utils.queue import RedisQueue
 
 wating_queue: RedisQueue = RedisQueue(
     'wating',
@@ -37,7 +37,7 @@ class MigrateParticapant:
                 print('대기열 큐에서 참가열 큐로 데이터 마이그레이션을 성공했습니다.')
                 return None
         except Exception as e:
-            wating_queue.claer()
+            wating_queue.clear()
             participating_queue.clear()
             print(e)
             return '대기열 큐에서 참가열 큐로 데이터 마이그레이션을 실패했습니다.'

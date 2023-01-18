@@ -1,13 +1,12 @@
 import json
 
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework.permissions import AllowAny
-
 from drf_yasg.utils import swagger_auto_schema
+from rest_framework.permissions import AllowAny
+from rest_framework.response import Response
+from rest_framework.views import APIView
 
-from core.utils.migrate import wating_queue, participating_queue
 from api.models import Coupon
+from core.utils.migrate import participating_queue, wating_queue
 
 
 class CouponEventView(APIView):

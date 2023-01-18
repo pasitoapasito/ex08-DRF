@@ -1,8 +1,8 @@
-import asyncio, time
-
-from aiohttp import ClientSession, ClientTimeout, TCPConnector
+import asyncio
+import time
 from pprint import pprint
 
+from aiohttp import ClientSession, ClientTimeout, TCPConnector
 
 _timeout = ClientTimeout(total=10)
 
