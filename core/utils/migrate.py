@@ -7,14 +7,14 @@ from core.utils.queue import RedisQueue
 
 wating_queue: RedisQueue = RedisQueue(
     'wating',
-    host=f'{REDIS_HOSTNAME}',
+    host=REDIS_HOSTNAME,
     port=6379,
     db=1,
 )
 
 participating_queue: RedisQueue = RedisQueue(
     'participating',
-    host=f'{REDIS_HOSTNAME}',
+    host=REDIS_HOSTNAME,
     port=6379,
     db=1,
 )
