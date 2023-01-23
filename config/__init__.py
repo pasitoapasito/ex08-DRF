@@ -6,9 +6,8 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
 application = get_wsgi_application()
 
 
-from core.utils.migrate import MigrateParticapant
+from core.utils.migrate import MigrateParticipant
 
-
-res = MigrateParticapant.data_migrate()
+res = MigrateParticipant.data_migrate()
 if res:
     print(res)

@@ -20,8 +20,7 @@ participating_queue: RedisQueue = RedisQueue(
 )
 
 
-class MigrateParticapant:
-
+class MigrateParticipant:
     @background(schedule=1)
     def data_migrate() -> None | str:
         wating_queue.clear()
